@@ -8,7 +8,7 @@ POST /subscriptions
 
 POST /airport/A302/METAR
 
-   * JSON payload { "data": "METAR A382 XXXX XXXX XXXX") will store METAR data for airport given in path
+   * JSON payload { "data": "METAR A302 XXXX XXXX XXXX" } will store METAR data for airport given in path
 
 GET /subscriptions
 
