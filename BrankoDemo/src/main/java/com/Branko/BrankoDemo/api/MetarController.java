@@ -18,20 +18,13 @@ public class MetarController{
 	@Autowired  
 	MetarService metarService;  
 	
-	//Returns all METAR data
-	@GetMapping("/airport/Metar")  
-	private List<Metar> getAllMetar() {  
-		return metarService.getAllMetar();
-	}
-	
-	//Adds new METAR data from file path as new row
-	//No check to see if icao exists
+	//Saves new METAR data into metar table
 	@PostMapping("/airport/{icaoCode}/METAR")  
 	private void saveMetar(@PathVariable("icaoCode") String icaoCode, @RequestBody Metar metar) {  
 		metarService.save(icaoCode, metar);
 	}
 	
-	//Shows last METAR data inserted for given icao
+	//Retrieves latest METAR data entry from metar table by icaoCode
 	@GetMapping("/airport/{icaoCode}/METAR")  
 	private List<Metar> getAllMetar(@PathVariable("icaoCode") String icaoCode){  
 		return metarService.getmetarById(icaoCode);

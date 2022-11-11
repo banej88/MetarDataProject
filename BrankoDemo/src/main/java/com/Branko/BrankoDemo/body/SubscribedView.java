@@ -2,8 +2,7 @@ package com.Branko.BrankoDemo.body;
 
 public class SubscribedView {
 	
-	// Temporary object to show only icao code JSON output for subscribed airports
-
+	//Object to show only icaoCode JSON output for subscribed airports
 	private String icaoCode;
 
 	public String getIcaoCode() {

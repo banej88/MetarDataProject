@@ -22,7 +22,7 @@ public class SubscriptionsController{
 	@Autowired  
 	SubscriptionsService subscriptionsService;  
 	
-	//Shows icao code column only for all subscribed airports
+	//Shows all icaoCode data from subscription table where subscribed field has value of 1
 	@GetMapping("/subscriptions")  
 	private List<SubscribedView> getAllSsubscribed() {  
 		List<SubscribedView> lista = new ArrayList<>();
@@ -34,19 +34,19 @@ public class SubscriptionsController{
 		return lista; 
 	} 
 	
-	//Shows icao code details for inputed airport
+	//Shows icaoCode data by icaoCode
 	@GetMapping("/subscriptions/{icaoCode}")  
 	private Subscriptions getIcaoCode(@PathVariable("icaoCode") String icaoCode) {  
 		return subscriptionsService.getIcaoCodeByIcaoCode(icaoCode);
 	} 
 	
-	//Changes value in table subscriptions from 0 to 1 to represent that subscription has been made
+	//Updates subscription table subscribed field from 0 to 1 by icaoCode
 	@PostMapping("/subscriptions")  
 	private void saveSubscription(@RequestBody Subscriptions subscriptions) {  
 		subscriptionsService.save(subscriptions);   
 	}
 	
-	//Changes value in table subscriptions from 1 to 0 to represent that user is no longer subscribed to the airport
+	//Changes in subscription table subscribed field from 1 to 0 by icaoCode
 	@DeleteMapping("/subscriptions/{icaoCode}")  
 	private void deleteStudent(@PathVariable("icaoCode") String icaoCode) {  
 		subscriptionsService.deleteSubscription(icaoCode);
