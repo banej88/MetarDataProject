@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnDefault;
+
 @Entity
 @Table(name = "subscriptions")
 public class Subscriptions {
@@ -19,6 +21,16 @@ public class Subscriptions {
 	@Column(name="subscribed")
 	private boolean subscribed;
 	
+	@Column(name="active")
+	@ColumnDefault("1")
+	private int active;
+
+	public int getActive() {
+		return active;
+	}
+	public void setActive(int active) {
+		this.active = active;
+	}
 	public int getId() {
 		return id;
 	}
